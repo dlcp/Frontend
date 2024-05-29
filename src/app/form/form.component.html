@@ -1,0 +1,51 @@
+<h1 class="centered">Formulario de registro</h1>
+
+<form [formGroup]="form" (ngSubmit)="submitForm()" class="form-container">
+  <div class="form-group">
+    <label for="firstname">Nombre</label>
+    <input id="firstname" formControlName="firstName" [class.is-invalid]="isInvalid('firstName')" required/>
+    <div *ngIf="isInvalid('firstName')" class="error-message">
+      {{ getErrorMessage('Nombre', 'required') }} 
+      {{ getErrorMessage('Nombre', 'pattern') }}
+      {{ getErrorMessage('Nombre', 'invalidNameLength') }}
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="lastname">Apellido</label>
+    <input id="lastname" formControlName="lastName" [class.is-invalid]="isInvalid('lastName')" required/>
+    <div *ngIf="isInvalid('lastName')" class="error-message">
+      {{ getErrorMessage('Apellido', 'required') }}
+      {{ getErrorMessage('Apellido', 'pattern') }}
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="email">Correo electrónico</label>
+    <input id="email" type="email" formControlName="email" [class.is-invalid]="isInvalid('email')" required/>
+    <div *ngIf="isInvalid('email')" class="error-message">
+      {{ getErrorMessage('email', 'required') }}
+      {{ getErrorMessage('email', 'email') }}
+      {{ getErrorMessage('email', 'pattern') }}
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="phone">Número de teléfono</label>
+    <input id="phone" type="tel" formControlName="phone" [class.is-invalid]="isInvalid('phone')" pattern="[0-9]{10}"/>
+    <div *ngIf="isInvalid('phone')" class="error-message">
+      {{ getErrorMessage('Celular', 'required') }}
+      {{ getErrorMessage('Celular', 'pattern') }}
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="birthday">Fecha de nacimiento</label>
+    <input id="birthday" type="date" formControlName="birthday" [class.is-invalid]="isInvalid('birthday')" />
+    <div *ngIf="isInvalid('birthday')" class="error-message">
+      {{ getErrorMessage('Fecha de nacimiento', 'required') }}
+    </div>
+  </div>
+
+  <button type="submit" class="submit-button">Enviar</button>
+</form>

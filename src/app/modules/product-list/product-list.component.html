@@ -1,0 +1,11 @@
+<!-- Mostrar productos disponibles -->
+<div *ngFor="let product of products">
+  <p>{{ product.name }} - {{ product.price }}</p>
+  <button (click)="onClickAdd(product)">Add to Cart</button>
+</div>
+
+<!-- Mostrar elementos del carrito -->
+<div *ngFor="let item of cartItems">
+  <p>{{ item.name }} - Quantity: {{ item.quantity }}</p>
+  <button (click)="onClickDelete(item.id)">Remove from Cart</button>
+</div>
